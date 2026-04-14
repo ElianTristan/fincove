@@ -64,10 +64,14 @@ export default function TandasPage() {
 
   const fetchTandas = async () => {
     try {
+      if (!currentFamily?.id) {
+        setLoading(false)
+        return
+      }
       const { data, error } = await supabase
         .from('tandas')
         .select('*')
-        .eq('family_id', currentFamily?.id)
+        .eq('family_id', currentFamily.id)
         .order('created_at', { ascending: false })
 
       if (error) throw error

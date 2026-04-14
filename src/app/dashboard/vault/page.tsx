@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button'
 import { Alert } from '@/components/ui/alert'
 import { formatDate } from '@/lib/utils'
 import {
-  Vault,
+  Lock,
   Upload,
   FileText,
   Image as ImageIcon,
@@ -152,7 +152,7 @@ export default function VaultPage() {
       {!currentFamily ? (
         <Card>
           <div className="text-center py-12">
-            <Vault className="w-12 h-12 mx-auto mb-4 text-gray-400" />
+            <Lock className="w-12 h-12 mx-auto mb-4 text-gray-400" />
             <p className="text-gray-600 dark:text-gray-400">
               Únete a un grupo familiar para usar la bóveda
             </p>
@@ -236,7 +236,7 @@ export default function VaultPage() {
               <div className="text-center py-8">Cargando...</div>
             ) : items.length === 0 ? (
               <div className="text-center py-8 text-gray-500">
-                <Vault className="w-12 h-12 mx-auto mb-3 opacity-50" />
+                <Lock className="w-12 h-12 mx-auto mb-3 opacity-50" />
                 <p>No hay archivos en la bóveda</p>
               </div>
             ) : (
