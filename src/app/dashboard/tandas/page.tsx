@@ -96,7 +96,7 @@ export default function TandasPage() {
     try {
       const { data, error: insertError } = await supabase
         .from('tandas')
-        .insert({
+        .insert([{
           family_id: currentFamily.id,
           name: newTanda.name,
           amount: parseFloat(newTanda.amount),
@@ -104,19 +104,19 @@ export default function TandasPage() {
           frequency: newTanda.frequency,
           start_date: newTanda.start_date,
           created_by: user.id,
-        })
+        }])
         .select()
         .single()
 
       if (insertError) throw insertError
 
       // Add creator as first participant
-      await supabase.from('tanda_participants').insert({
+      await supabase.from('tanda_participants').insert([{
         tanda_id: data.id,
         user_id: user.id,
         turn_number: 1,
         status: 'pending',
-      })
+      }])
 
       setShowCreateForm(false)
       setNewTanda({
