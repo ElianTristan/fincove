@@ -102,9 +102,10 @@ export default function TandasPage() {
           amount: parseFloat(newTanda.amount),
           participants: parseInt(newTanda.participants),
           frequency: newTanda.frequency,
+          status: 'active',
           start_date: newTanda.start_date,
           created_by: user.id,
-        }])
+        } as any])
         .select()
         .single()
 
